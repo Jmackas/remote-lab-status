@@ -4,7 +4,7 @@
 
 function runCheck() {
 
-
+let labList = document.querySelector("#labList")
 
     let labName = ["Lab1", "Lab2", "Lab3", "Lab4", "Lab5", "Lab6", "Lab7", "Lab8", "Lab9", "Lab10", "Lab11", "Lab12", "Lab13", "Lab14", "Lab15", "Lab16", "Lab17", "Lab18", "Lab19", "Lab20", "LabCitect1", "LabCitect2", "LabCitect3", "LabDevicenet", "PROFIBUS", "Lab-DNP3", "RLSVR2012", "UK-Lab1", "UK-Lab2", "UK-Lab3", "UK-Lab4", "ZA-Lab1", "ZA-Lab2", "ZA-Lab3", "ZA-Lab4", "Lab-Old", "Lab-Old2", "Lab6-Old", "Lab-HISPEC", "LabPneumatic1", "Lab-GRANTA", "ZA-RR-LAB1", "ZA-RR-LAB2", ];
 
@@ -17,14 +17,18 @@ function runCheck() {
             if (this.readyState == 4 && this.status == 200) {
                 let labPingResponse = this.responseText;
 
+             
+             
+             
                 // If the lab is not reachable
                 if (labPingResponse == '{"result":false}') {
-                    document.write("<div class='labRow labDown'>" + labName[i] + " is not reachable" + "</div>");
+                 labList.insertAdjacentHTML("afterend", "<div class='labRow labDown'>" + labName[i] + " is not reachable" + "</div>");
+
                 }
 
                 // If the lab is reachable
                 else {
-                    document.write("<div class='labRow labUp'>" + labName[i] + " is reachable" + "</div>");
+                 labList.insertAdjacentHTML("afterend", "<div class='labRow labUp'>" + labName[i] + " is reachable" + "</div>");
                 }
 
             }
