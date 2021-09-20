@@ -1,10 +1,29 @@
 <head>
  <style>
- body {
-    font-family: calibri;
-    font-size: 125%;
-    line-height: 1.45em;
- }
+body {
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+}
+
+.labRow {
+    position: relative;
+    padding: .75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+}
+
+.labRow.labDown {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+
+}
+
+.labRow.labUp {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
  </style>
  
 </head>
@@ -13,13 +32,14 @@
 <p>https://github.com/Jmackas/remote-lab-status</p>
 -->
  
-<div id="labstatus"></div>
 
 
 
 <script>
 
-setTimeout(runCheck, 2000);
+// Sort alphabetically 
+
+runCheck();
 
 function runCheck() {
 
@@ -34,8 +54,15 @@ function runCheck() {
             if (this.readyState == 4 && this.status == 200) {
                 let labPingResponse = this.responseText;
 
+                // If the lab is not reachable
+                if (labPingResponse == '{"result":false}') {
+                    document.write("<div class='labRow labDown'>" + labName[i] + " is not reachable" + "</div>");
+                }
 
-                document.querySelector("#labstatus").insertAdjacentHTML("afterend", labName[i] + " - " + "<strong>" + labPingResponse + "</strong>" + " - " + labAjaxCall[i] + "<br>");
+                // If the lab is reachable
+                else {
+                    document.write("<div class='labRow labUp'>" + labName[i] + " is reachable" + "</div>");
+                }
 
             }
         }
@@ -47,7 +74,6 @@ function runCheck() {
 
 }
 
-    
 
 
 </script>
