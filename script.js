@@ -1,6 +1,6 @@
 // Sort alphabetically 
+setTimeout(runCheck(), 1000);
 
-runCheck();
 
 function runCheck() {
       document.head.insertAdjacentHTML("beforeend",'<link rel=stylesheet href="style.css">');
