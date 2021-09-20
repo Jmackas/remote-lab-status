@@ -22,13 +22,13 @@ let labList = document.querySelector("#labList")
              
                 // If the lab is not reachable
                 if (labPingResponse == '{"result":false}') {
-                 labList.insertAdjacentHTML("afterend", "<a class='labRow labDown' a href='" + labAjaxCall[i] + "'>" + labName[i] + " is down" + "<br>" + "</a>");
+                 labList.insertAdjacentHTML("afterend", "<a class='labRow labDown' a href='" + labAjaxCall[i] + "' target='_blank'>" + labName[i] + " is down" + "<br>" + "</a>");
 
                 }
 
                 // If the lab is reachable
                 else {
-                 labList.insertAdjacentHTML("afterend", "<a class='labRow labUp' a href='" + labAjaxCall[i] + "'>" + labName[i] + " is reachable" + "<br>" + "</a>");
+                 labList.insertAdjacentHTML("afterend", "<a class='labRow labUp' href='" + labAjaxCall[i] + "' target='_blank'>" + labName[i] + " is reachable" + "<br>" + "</a>");
                 }
 
             }
