@@ -1,5 +1,5 @@
 // Sort alphabetically 
-setTimeout(runCheck(), 1000);
+setTimeout(runCheck(), 3000);
 
 
 function runCheck() {
